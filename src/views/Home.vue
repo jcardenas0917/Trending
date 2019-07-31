@@ -24,7 +24,7 @@
   </div>
 </template>
 
-<script>
+// <script>
 // @ is an alias to /src
 import axios from "axios";
 export default {
@@ -33,8 +33,8 @@ export default {
       search: {
         userInput: "",
         googleKey:"AIzaSyBRlj_omJsZWTgEIXq9yLePCL_HNfIfdkk",
-        googleSearch : "https://www.googleapis.com/customsearch/v1?key=" + this.googleKey + "&cx=015376139325119918930:rwhxpl8byui&q=" + this.searchInput,
-        replace : this.googleSearch.replace(" ", "%20")
+        googleSearch : "https://www.googleapis.com/customsearch/v1?key=" + this.search.googleKey + "&cx=015376139325119918930:rwhxpl8byui&q=" + this.search.searchInput,
+        replace : this.search.googleSearch.replace(" ", "%20")
       }
     };
   },
@@ -42,7 +42,8 @@ export default {
     handleSubmit() {
       axios
         .get(
-         this.replace
+        //  "https://www.googleapis.com/customsearch/v1?key="+ this.googleKey+"&cx=015376139325119918930:rwhxpl8byui&q="+this.searchInput,
+        this.search.replace
         )
         .then(response => {
           console.log(response);
